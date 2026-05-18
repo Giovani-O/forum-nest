@@ -1,5 +1,6 @@
 allowBuilds:
   '@nestjs/core': false
   '@prisma/engines': true
+  '@swc/core': set this to true or false
   prisma: true
   unrs-resolver: set this to true or false
