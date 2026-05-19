@@ -33,8 +33,8 @@ describe('Fetch Recent Questions', () => {
       page: 1,
     })
 
-    expect(result.isSuccess()).toBe(true)
-    const { questions } = result.value!
+    assert(result.isSuccess())
+    const { questions } = result.value
 
     expect(questions).toEqual([
       expect.objectContaining({ createdAt: new Date(2022, 0, 23) }),
@@ -52,8 +52,8 @@ describe('Fetch Recent Questions', () => {
       page: 2,
     })
 
-    expect(result.isSuccess()).toBe(true)
-    const { questions } = result.value!
+    assert(result.isSuccess())
+    const { questions } = result.value
 
     expect(questions).toHaveLength(2)
   })

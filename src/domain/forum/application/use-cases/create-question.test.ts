@@ -26,8 +26,8 @@ describe('Create question tests', () => {
       attachmentIds: ['1', '2'],
     })
 
-    expect(result.isSuccess()).toBe(true)
-    const { question } = result.value!
+    assert(result.isSuccess())
+    const { question } = result.value
 
     expect(question.id).toBeDefined()
     expect(question.title).toEqual('Is this a question?')

@@ -26,8 +26,8 @@ describe('Create Answer', () => {
       attachmentIds: ['1', '2'],
     })
 
-    expect(result.isSuccess()).toBe(true)
-    const { answer } = result.value!
+    assert(result.isSuccess())
+    const { answer } = result.value
 
     expect(answer.id).toBeTruthy()
     expect(inMemoryAnswersRepository.items[0]?.id).toEqual(answer.id)

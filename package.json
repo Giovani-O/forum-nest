@@ -11,6 +11,7 @@
     "debug": "nest start --debug --watch",
     "prod": "node dist/main",
     "lint": "biome lint .",
+    "lint:write": "biome lint --write ./src",
     "format": "biome format --write .",
     "no-emit": "tsc --noEmit",
     "test": "vitest run",

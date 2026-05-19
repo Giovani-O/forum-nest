@@ -37,8 +37,8 @@ describe('Fetch Question Answers', () => {
       page: 1,
     })
 
-    expect(result.isSuccess()).toBe(true)
-    const { answers } = result.value!
+    assert(result.isSuccess())
+    const { answers } = result.value
 
     expect(answers).toHaveLength(2)
     expect(answers).toEqual([
@@ -61,8 +61,8 @@ describe('Fetch Question Answers', () => {
       page: 2,
     })
 
-    expect(result.isSuccess()).toBe(true)
-    const { answers } = result.value!
+    assert(result.isSuccess())
+    const { answers } = result.value
 
     expect(answers).toHaveLength(2)
   })

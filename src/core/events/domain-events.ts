@@ -2,47 +2,51 @@ import type { AggregateRoot } from '../entities/aggregate-root.js'
 import type { UniqueEntityID } from '../entities/unique-entity-id.js'
 import type { DomainEvent } from './domain-event.js'
 
-type DomainEventCallback = (event: any) => void
+type DomainEventCallback = (event: unknown) => void
 
 export class DomainEvents {
   private static handlersMap: Record<string, DomainEventCallback[]> = {} // subscribers
-  private static markedAggregates: AggregateRoot<any>[] = []
+  private static markedAggregates: AggregateRoot<unknown>[] = []
 
-  public static markAggregateForDispatch(aggregate: AggregateRoot<any>) {
-    const aggregateFound = !!this.findMarkedAggregateByID(aggregate.id)
+  public static markAggregateForDispatch(aggregate: AggregateRoot<unknown>) {
+    const aggregateFound = !!DomainEvents.findMarkedAggregateByID(aggregate.id)
 
     if (!aggregateFound) {
-      this.markedAggregates.push(aggregate)
+      DomainEvents.markedAggregates.push(aggregate)
     }
   }
 
-  private static dispatchAggregateEvents(aggregate: AggregateRoot<any>) {
+  private static dispatchAggregateEvents(aggregate: AggregateRoot<unknown>) {
     aggregate.domainEvents.forEach((event: DomainEvent) => {
-      this.dispatch(event)
+      DomainEvents.dispatch(event)
     })
   }
 
   private static removeAggregateFromMarkedDispatchList(
-    aggregate: AggregateRoot<any>,
+    aggregate: AggregateRoot<unknown>,
   ) {
-    const index = this.markedAggregates.findIndex((a) => a.equals(aggregate))
+    const index = DomainEvents.markedAggregates.findIndex((a) =>
+      a.equals(aggregate),
+    )
 
-    this.markedAggregates.splice(index, 1)
+    DomainEvents.markedAggregates.splice(index, 1)
   }
 
   private static findMarkedAggregateByID(
     id: UniqueEntityID,
-  ): AggregateRoot<any> | undefined {
-    return this.markedAggregates.find((aggregate) => aggregate.id.equals(id))
+  ): AggregateRoot<unknown> | undefined {
+    return DomainEvents.markedAggregates.find((aggregate) =>
+      aggregate.id.equals(id),
+    )
   }
 
   public static dispatchEventsForAggregate(id: UniqueEntityID) {
-    const aggregate = this.findMarkedAggregateByID(id)
+    const aggregate = DomainEvents.findMarkedAggregateByID(id)
 
     if (aggregate) {
-      this.dispatchAggregateEvents(aggregate)
+      DomainEvents.dispatchAggregateEvents(aggregate)
       aggregate.clearEvents()
-      this.removeAggregateFromMarkedDispatchList(aggregate)
+      DomainEvents.removeAggregateFromMarkedDispatchList(aggregate)
     }
   }
 
@@ -50,40 +54,34 @@ export class DomainEvents {
     callback: DomainEventCallback,
     eventClassName: string,
   ) {
-    const wasEventRegisteredBefore = eventClassName in this.handlersMap
+    const wasEventRegisteredBefore = eventClassName in DomainEvents.handlersMap
 
     if (!wasEventRegisteredBefore) {
-      this.handlersMap[eventClassName] = []
+      DomainEvents.handlersMap[eventClassName] = []
     }
 
-    this.handlersMap[eventClassName]?.push(callback)
+    DomainEvents.handlersMap[eventClassName]?.push(callback)
   }
 
   public static clearHandlers() {
-    this.handlersMap = {}
+    DomainEvents.handlersMap = {}
   }
 
   public static clearMarkedAggregates() {
-    this.markedAggregates = []
+    DomainEvents.markedAggregates = []
   }
 
   private static dispatch(event: DomainEvent) {
     const eventClassName: string = event.constructor.name
 
-    const isEventRegistered = eventClassName in this.handlersMap
+    const isEventRegistered = eventClassName in DomainEvents.handlersMap
 
     if (isEventRegistered) {
-      const handlers = this.handlersMap[eventClassName] ?? []
+      const handlers = DomainEvents.handlersMap[eventClassName] ?? []
 
       for (const handler of handlers) {
         handler(event)
       }
     }
-  }
-
-  private _sanityCheck() {
-    console.log(
-      'Biome made me create this function, it serves no purpose other than perserving my sanity...',
-    )
   }
 }
