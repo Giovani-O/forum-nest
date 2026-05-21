@@ -1,4 +1,12 @@
-import 'tsconfig-paths/register'
+import { resolve } from 'node:path'
+import { register } from 'tsconfig-paths'
+
+register({
+  baseUrl: resolve(process.cwd(), 'dist/src'),
+  paths: {
+    '@/*': ['./*'],
+  },
+})
 
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'

@@ -3,7 +3,7 @@ import { CurrentUser } from 'src/infra/auth/current-user-decorator'
 import type { UserPayload } from 'src/infra/auth/jwt.strategy'
 import { JwtAuthGuard } from 'src/infra/auth/jwt-auth.guard'
 import { z } from 'zod'
-import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
+import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question.js'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 
 const createQuestionBodySchema = z.object({

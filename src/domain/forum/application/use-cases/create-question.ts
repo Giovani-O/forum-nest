@@ -4,7 +4,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
 import { Question } from '../../enterprise/entities/question.js'
 import { QuestionAttachment } from '../../enterprise/entities/question-attachment.js'
 import { QuestionAttachmentList } from '../../enterprise/entities/question-attachment-list.js'
-import type { QuestionsRepository } from '../repositories/question.repository.js'
+import { QuestionsRepository } from '../repositories/question.repository.js'
 
 interface CreateQuestionUseCaseRequest {
   authorId: string
