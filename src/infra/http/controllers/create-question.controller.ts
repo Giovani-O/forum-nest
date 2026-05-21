@@ -2,7 +2,7 @@ import { Body, Controller, Post, UseGuards } from '@nestjs/common'
 import { CurrentUser } from 'src/infra/auth/current-user-decorator'
 import type { UserPayload } from 'src/infra/auth/jwt.strategy'
 import { JwtAuthGuard } from 'src/infra/auth/jwt-auth.guard'
-import { PrismaService } from 'src/infra/prisma/prisma.service'
+import { PrismaService } from 'src/infra/database/prisma/prisma.service'
 import { z } from 'zod'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 
