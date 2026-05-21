@@ -1,4 +1,5 @@
-import { type Either, success } from '@/core/either.js'
+import { Injectable } from '@nestjs/common'
+import { Either, success } from '@/core/either.js'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
 import { Question } from '../../enterprise/entities/question.js'
 import { QuestionAttachment } from '../../enterprise/entities/question-attachment.js'
@@ -19,6 +20,11 @@ type CreateQuestionUseCaseResponse = Either<
   }
 >
 
+/* Esse Injectable() cria acoplamento entre o use case e o prisma, MAS, ainda é preferível se comparado a criar
+   uma representação do use case na camada de infraestrutura, o que além de ferir a arquitetura em camadas
+   ainda criaria mais um arquivo para acessar o use case, uma complexidade desnecessária.
+   E no fim das contas, nós não vamos substituir o prisma por outro ORM, então isso não se tornará um problema. */
+@Injectable()
 export class CreateQuestionUseCase {
   constructor(private questionsRepository: QuestionsRepository) {}
 
