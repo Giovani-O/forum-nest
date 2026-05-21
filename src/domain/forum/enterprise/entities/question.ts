@@ -13,7 +13,7 @@ import { Slug } from './value-objects/slug.js'
 
 export interface QuestionProps {
   authorId: UniqueEntityID
-  bestAnswerId?: UniqueEntityID | undefined
+  bestAnswerId?: UniqueEntityID | null
   title: string
   content: string
   slug: Slug
@@ -84,13 +84,10 @@ export class Question extends AggregateRoot<QuestionProps> {
     this.touch()
   }
 
-  set bestAnswerId(bestAnswerId: UniqueEntityID | undefined) {
+  set bestAnswerId(bestAnswerId: UniqueEntityID | undefined | null) {
     if (bestAnswerId === undefined) return
 
-    if (
-      this._props.bestAnswerId === undefined ||
-      !this._props.bestAnswerId.equals(bestAnswerId)
-    ) {
+    if (bestAnswerId && bestAnswerId !== this._props.bestAnswerId) {
       this.addDomainEvent(new QuestionBestAnswerChosenEvent(this, bestAnswerId))
     }
 
