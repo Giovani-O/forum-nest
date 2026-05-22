@@ -27,7 +27,7 @@ export class CreateAccountController {
       password,
     })
 
-    if (result.isLeft()) {
+    if (result.isSuccess()) {
       throw new Error()
     }
   }
