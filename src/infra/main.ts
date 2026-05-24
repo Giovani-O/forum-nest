@@ -8,19 +8,18 @@ register({
   },
 })
 
-import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 import 'dotenv/config'
 import { AppModule } from './app.module.js'
-import { Env } from './env.js'
+import { EnvService } from './env/env.service.js'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     // logger: false
   })
 
-  const configService = app.get<ConfigService<Env, true>>(ConfigService)
-  const port = configService.get('PORT', { infer: true })
+  const configService = app.get(EnvService)
+  const port = configService.get('PORT')
 
   app.getHttpAdapter().getInstance().set('json spaces', 2)
   app.enableShutdownHooks()
