@@ -5,7 +5,6 @@
     "resolvePackageJsonExports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,7 +15,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@test/*": ["./test/*"]
+      "@test/*": ["./test/*"],
     },
     "incremental": true,
     "skipLibCheck": true,
@@ -26,6 +25,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
-    "types": ["vitest/globals"]
-  }
+    "types": ["vitest/globals"],
+  },
 }
