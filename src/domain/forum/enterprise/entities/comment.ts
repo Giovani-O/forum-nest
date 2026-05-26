@@ -1,5 +1,5 @@
 import { AggregateRoot } from '@/core/entities/aggregate-root.js'
-import type { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
 
 export interface CommentProps {
   authorId: UniqueEntityID

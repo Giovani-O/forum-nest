@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { type Either, success } from '@/core/either.js'
-import type { Question } from '../../enterprise/entities/question.js'
+import { Question } from '../../enterprise/entities/question.js'
 import { QuestionsRepository } from '../repositories/question.repository.js'
 
 interface FetchRecentQuestionsUseCaseRequest {

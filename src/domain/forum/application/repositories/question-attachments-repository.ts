@@ -1,4 +1,4 @@
-import type { QuestionAttachment } from '../../enterprise/entities/question-attachment.js'
+import { QuestionAttachment } from '../../enterprise/entities/question-attachment.js'
 
 export abstract class QuestionAttachmentsRepository {
   abstract findManyByQuestionId(

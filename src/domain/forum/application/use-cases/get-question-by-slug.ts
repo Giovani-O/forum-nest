@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { type Either, failure, success } from '@/core/either.js'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found.error.js'
-import type { Question } from '../../enterprise/entities/question.js'
+import { Question } from '../../enterprise/entities/question.js'
 import { QuestionsRepository } from '../repositories/question.repository.js'
 
 interface GetQuestionBySlugUseCaseRequest {

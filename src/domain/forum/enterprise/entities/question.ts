@@ -5,8 +5,8 @@
 
 import dayjs from 'dayjs'
 import { AggregateRoot } from '@/core/entities/aggregate-root.js'
-import type { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
-import type { Optional } from '@/core/types/optional.js'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
+import { Optional } from '@/core/types/optional.js'
 import { QuestionBestAnswerChosenEvent } from '../events/question-best-answer-chosen-event.js'
 import { QuestionAttachmentList } from './question-attachment-list.js'
 import { Slug } from './value-objects/slug.js'

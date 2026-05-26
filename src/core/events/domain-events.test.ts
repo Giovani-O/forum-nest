@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { AggregateRoot } from '../entities/aggregate-root.js'
-import type { UniqueEntityID } from '../entities/unique-entity-id.js'
-import type { DomainEvent } from './domain-event.js'
+import { UniqueEntityID } from '../entities/unique-entity-id.js'
+import { DomainEvent } from './domain-event.js'
 import { DomainEvents } from './domain-events.js'
 
 // Evento

@@ -1,6 +1,6 @@
 import { type Either, success } from '@/core/either.js'
-import type { AnswerComment } from '../../enterprise/entities/answer-comment.js'
-import type { AnswerCommentsRepository } from '../repositories/answer-comment-repository.js'
+import { AnswerComment } from '../../enterprise/entities/answer-comment.js'
+import { AnswerCommentsRepository } from '../repositories/answer-comment-repository.js'
 
 interface FetchAnswerCommentsUseCaseRequest {
   answerId: string

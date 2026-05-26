@@ -2,8 +2,8 @@ import { failure, success, type Either } from '@/core/either.js'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found.error.js'
 import { QuestionComment } from '../../enterprise/entities/question-comment.js'
-import type { QuestionsRepository } from '../repositories/question.repository.js'
-import type { QuestionCommentsRepository } from '../repositories/question-comments.repository.js'
+import { QuestionsRepository } from '../repositories/question.repository.js'
+import { QuestionCommentsRepository } from '../repositories/question-comments.repository.js'
 
 interface CommentOnQuestionUseCaseRequest {
   authorId: string

@@ -7,7 +7,7 @@ import { InMemoryQuestionAttachmentsRepository } from '@test/repositories/in-mem
 import { InMemoryQuestionsRepository } from '@test/repositories/in-memory-questions-repository.js'
 import { waitFor } from '@test/utils/wait-for.js'
 import { beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest'
-import type { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answer-attachments-repository.js'
+import { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answer-attachments-repository.js'
 import {
   SendNotificationUseCase,
   type SendNotificationUseCaseRequest,

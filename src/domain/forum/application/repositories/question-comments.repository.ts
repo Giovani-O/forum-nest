@@ -1,5 +1,5 @@
-import type { QuestionComment } from '../../enterprise/entities/question-comment.js'
-import type { PaginationParams } from './pagination-parameters.js'
+import { QuestionComment } from '../../enterprise/entities/question-comment.js'
+import { PaginationParams } from './pagination-parameters.js'
 
 export abstract class QuestionCommentsRepository {
   abstract findById(id: string): Promise<QuestionComment | null>

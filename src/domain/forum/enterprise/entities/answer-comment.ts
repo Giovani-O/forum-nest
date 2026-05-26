@@ -1,5 +1,5 @@
-import type { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
-import type { Optional } from '@/core/types/optional.js'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
+import { Optional } from '@/core/types/optional.js'
 import { AnswerCommentCreatedEvent } from '@/domain/forum/enterprise/events/answer-comment-created.js'
 import { Comment, type CommentProps } from './comment.js'
 

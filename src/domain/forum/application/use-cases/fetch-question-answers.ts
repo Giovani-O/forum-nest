@@ -1,6 +1,6 @@
 import { type Either, success } from '@/core/either.js'
-import type { Answer } from '../../enterprise/entities/answer.js'
-import type { AnswersRepository } from '../repositories/answers.repository.js'
+import { Answer } from '../../enterprise/entities/answer.js'
+import { AnswersRepository } from '../repositories/answers.repository.js'
 
 interface FetchQuestionAnswersUseCaseRequest {
   questionId: string

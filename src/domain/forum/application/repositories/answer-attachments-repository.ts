@@ -1,4 +1,4 @@
-import type { AnswerAttachment } from '../../enterprise/entities/answer-attachment.js'
+import { AnswerAttachment } from '../../enterprise/entities/answer-attachment.js'
 
 export abstract class AnswerAttachmentsRepository {
   abstract findManyByAnswerId(answerId: string): Promise<AnswerAttachment[]>

@@ -1,6 +1,6 @@
 // Reminder: Classes abstratas não podem ser instanciadas diretamente, outras classes estendem da classe abstrata.
 
-import type { DomainEvent } from '../events/domain-event.js'
+import { DomainEvent } from '../events/domain-event.js'
 import { DomainEvents } from '../events/domain-events.js'
 import { Entity } from './entity.js'
 

@@ -1,9 +1,9 @@
 import { type Either, failure, success } from '@/core/either.js'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed.error.js'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found.error.js'
-import type { Question } from '../../enterprise/entities/question.js'
-import type { AnswersRepository } from '../repositories/answers.repository.js'
-import type { QuestionsRepository } from '../repositories/question.repository.js'
+import { Question } from '../../enterprise/entities/question.js'
+import { AnswersRepository } from '../repositories/answers.repository.js'
+import { QuestionsRepository } from '../repositories/question.repository.js'
 
 interface ChooseQuestionBestAnswerUseCaseRequest {
   authorId: string

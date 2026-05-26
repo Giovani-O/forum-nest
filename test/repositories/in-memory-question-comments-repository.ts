@@ -1,6 +1,6 @@
-import type { PaginationParams } from '@/domain/forum/application/repositories/pagination-parameters.js'
-import type { QuestionCommentsRepository } from '@/domain/forum/application/repositories/question-comments.repository.js'
-import type { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment.js'
+import { PaginationParams } from '@/domain/forum/application/repositories/pagination-parameters.js'
+import { QuestionCommentsRepository } from '@/domain/forum/application/repositories/question-comments.repository.js'
+import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment.js'
 
 export class InMemoryQuestionCommentsRepository
   implements QuestionCommentsRepository

@@ -1,5 +1,5 @@
-import type { Question } from '../../enterprise/entities/question.js'
-import type { PaginationParams } from './pagination-parameters.js'
+import { Question } from '../../enterprise/entities/question.js'
+import { PaginationParams } from './pagination-parameters.js'
 
 export abstract class QuestionsRepository {
   abstract findById(id: string): Promise<Question | null>

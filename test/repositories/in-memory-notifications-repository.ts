@@ -1,5 +1,5 @@
-import type { NotificationsRepository } from '@/domain/notification/application/repositories/notifications-repository.js'
-import type { Notification } from '@/domain/notification/enterprise/entities/notification.js'
+import { NotificationsRepository } from '@/domain/notification/application/repositories/notifications-repository.js'
+import { Notification } from '@/domain/notification/enterprise/entities/notification.js'
 
 export class InMemoryNotificationsRepository
   implements NotificationsRepository
