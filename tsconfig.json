@@ -15,7 +15,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@test/*": ["./test/*"]
+      "@test/*": ["./test/*"],
     },
     "incremental": true,
     "skipLibCheck": true,
@@ -25,6 +25,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
-    "types": ["vitest/globals"]
-  }
+    "types": ["vitest/globals", "multer"],
+  },
 }
