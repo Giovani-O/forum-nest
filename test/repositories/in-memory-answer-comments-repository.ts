@@ -2,8 +2,8 @@ import { DomainEvents } from '@/core/events/domain-events.js'
 import { AnswerCommentsRepository } from '@/domain/forum/application/repositories/answer-comment-repository.js'
 import { PaginationParams } from '@/domain/forum/application/repositories/pagination-parameters.js'
 import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment.js'
-import { InMemoryStudentsRepository } from './in-memory-students-repository'
 import { CommentWithAuthor } from '@/domain/forum/enterprise/entities/value-objects/comment-with-author'
+import { InMemoryStudentsRepository } from './in-memory-students-repository'
 
 export class InMemoryAnswerCommentsRepository
   implements AnswerCommentsRepository

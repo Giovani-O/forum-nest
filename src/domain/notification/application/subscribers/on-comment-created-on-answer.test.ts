@@ -4,6 +4,7 @@ import { InMemoryAnswerAttachmentsRepository } from '@test/repositories/in-memor
 import { InMemoryAnswerCommentsRepository } from '@test/repositories/in-memory-answer-comments-repository.js'
 import { InMemoryAnswersRepository } from '@test/repositories/in-memory-answers-repository.js'
 import { InMemoryNotificationsRepository } from '@test/repositories/in-memory-notifications-repository.js'
+import { InMemoryStudentsRepository } from '@test/repositories/in-memory-students-repository.js'
 import { waitFor } from '@test/utils/wait-for.js'
 import { beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest'
 import { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answer-attachments-repository.js'
@@ -14,6 +15,7 @@ import {
 } from '../use-cases/send-notification.js'
 import { OnCommentCreatedOnAnswer } from './on-comment-created-on-answer.js'
 
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryAnswerAttachmentsRepository: AnswerAttachmentsRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository
@@ -33,7 +35,10 @@ describe('On comment created on answer', () => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository,
     )
-    inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository(
+      inMemoryStudentsRepository,
+    )
     inMemoryNotificationsRepository = new InMemoryNotificationsRepository()
     sut = new SendNotificationUseCase(inMemoryNotificationsRepository)
 

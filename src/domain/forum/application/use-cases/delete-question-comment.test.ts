@@ -1,17 +1,21 @@
 import { makeQuestionComment } from '@test/factories/make-question-comment.js'
 import { InMemoryQuestionCommentsRepository } from '@test/repositories/in-memory-question-comments-repository.js'
+import { InMemoryStudentsRepository } from '@test/repositories/in-memory-students-repository.js'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed.error.js'
 import { DeleteQuestionCommentUseCase } from './delete-question-comment.js'
 
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository
 let sut: DeleteQuestionCommentUseCase
 
 describe('Delete Question Comment', () => {
   beforeEach(() => {
-    inMemoryQuestionCommentsRepository =
-      new InMemoryQuestionCommentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentsRepository(
+      inMemoryStudentsRepository,
+    )
 
     sut = new DeleteQuestionCommentUseCase(inMemoryQuestionCommentsRepository)
   })

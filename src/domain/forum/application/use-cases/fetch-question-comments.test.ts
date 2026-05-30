@@ -1,10 +1,10 @@
 import { makeQuestionComment } from '@test/factories/make-question-comment.js'
+import { makeStudent } from '@test/factories/make-student.js'
 import { InMemoryQuestionCommentsRepository } from '@test/repositories/in-memory-question-comments-repository.js'
+import { InMemoryStudentsRepository } from '@test/repositories/in-memory-students-repository.js'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
 import { FetchQuestionCommentsUseCase } from './fetch-question-comments.js'
-import { InMemoryStudentsRepository } from '@test/repositories/in-memory-students-repository.js'
-import { makeStudent } from '@test/factories/make-student.js'
 
 let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository

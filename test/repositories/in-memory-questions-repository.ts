@@ -2,10 +2,10 @@ import { DomainEvents } from '@/core/events/domain-events.js'
 import { PaginationParams } from '@/domain/forum/application/repositories/pagination-parameters.js'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/question.repository.js'
 import { Question } from '@/domain/forum/enterprise/entities/question.js'
+import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/question-details'
 import { InMemoryAttachmentsRepository } from './in-memory-attachments-repository'
 import { InMemoryQuestionAttachmentsRepository } from './in-memory-question-attachments-repository'
 import { InMemoryStudentsRepository } from './in-memory-students-repository'
-import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/question-details'
 
 export class InMemoryQuestionsRepository implements QuestionsRepository {
   public items: Question[] = []

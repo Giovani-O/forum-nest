@@ -1,18 +1,22 @@
 import { InMemoryAnswerAttachmentsRepository } from '@test/repositories/in-memory-answer-attachments-repository.js'
 import { InMemoryAnswersRepository } from '@test/repositories/in-memory-answers-repository.js'
+import { InMemoryAttachmentsRepository } from '@test/repositories/in-memory-attachments-repository.js'
 import { InMemoryQuestionAttachmentsRepository } from '@test/repositories/in-memory-question-attachments-repository.js'
 import { InMemoryQuestionsRepository } from '@test/repositories/in-memory-questions-repository.js'
+import { InMemoryStudentsRepository } from '@test/repositories/in-memory-students-repository.js'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id.js'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed.error.js'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found.error.js'
 import { Answer } from '../../enterprise/entities/answer.js'
 import { Question } from '../../enterprise/entities/question.js'
 import { Slug } from '../../enterprise/entities/value-objects/slug.js'
 import { ChooseQuestionBestAnswerUseCase } from './choose-best-answer.js'
-import { NotAllowedError } from '@/core/errors/errors/not-allowed.error.js'
-import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found.error.js'
 
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: ChooseQuestionBestAnswerUseCase
@@ -23,8 +27,12 @@ describe('Choose Question Best Answer Use Case', () => {
       new InMemoryQuestionAttachmentsRepository()
     inMemoryAnswerAttachmentsRepository =
       new InMemoryAnswerAttachmentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository,
