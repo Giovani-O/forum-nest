@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common'
+import { DomainEvents } from '@/core/events/domain-events'
 import { PaginationParams } from '@/domain/forum/application/repositories/pagination-parameters'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/question.repository'
 import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/question-attachments-repository'
@@ -22,7 +23,9 @@ export class PrismaQuestionRepository implements QuestionsRepository {
       },
     })
 
-    if (!question) return null
+    if (!question) {
+      return null
+    }
 
     return PrismaQuestionMapper.toDomain(question)
   }
@@ -71,6 +74,20 @@ export class PrismaQuestionRepository implements QuestionsRepository {
     return questions.map(PrismaQuestionMapper.toDomain)
   }
 
+  async create(question: Question): Promise<void> {
+    const data = PrismaQuestionMapper.toPrisma(question)
+
+    await this.prisma.question.create({
+      data,
+    })
+
+    await this.questionAttachmentsRepository.createMany(
+      question.attachments.getItems(),
+    )
+
+    DomainEvents.dispatchEventsForAggregate(question.id)
+  }
+
   async save(question: Question): Promise<void> {
     const data = PrismaQuestionMapper.toPrisma(question)
 
@@ -88,18 +105,8 @@ export class PrismaQuestionRepository implements QuestionsRepository {
         question.attachments.getRemovedItems(),
       ),
     ])
-  }
 
-  async create(question: Question): Promise<void> {
-    const data = PrismaQuestionMapper.toPrisma(question)
-
-    await this.prisma.question.create({
-      data,
-    })
-
-    await this.questionAttachmentsRepository.createMany(
-      question.attachments.getItems(),
-    )
+    DomainEvents.dispatchEventsForAggregate(question.id)
   }
 
   async delete(question: Question): Promise<void> {
