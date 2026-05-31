@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
-    include: ['src/infra/http/controllers/*.test.ts'],
+    include: ['src/infra/**/*.test.ts'],
     globals: true,
     root: './',
     setupFiles: ['./test/setup-e2e.ts'],
