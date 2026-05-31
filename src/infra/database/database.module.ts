@@ -11,11 +11,13 @@ import { PrismaService } from './prisma/prisma.service'
 import { PrismaAnswerAttachmentsRepository } from './prisma/repositories/prisma-answer-attachments-repository'
 import { PrismaAnswerCommentsRepository } from './prisma/repositories/prisma-answer-coments-repository'
 import { PrismaAnswersRepository } from './prisma/repositories/prisma-answers-repository'
+import { PrismaAttachmentsRepository } from './prisma/repositories/prisma-attachments-repository'
 import { PrismaQuestionAttachmentsRepository } from './prisma/repositories/prisma-question-attachments-repository'
 import { PrismaQuestionCommentsRepository } from './prisma/repositories/prisma-question-comments-repository'
 import { PrismaQuestionRepository } from './prisma/repositories/prisma-question-repository'
 import { PrismaStudentsRepository } from './prisma/repositories/prisma-students-repository'
-import { PrismaAttachmentsRepository } from './prisma/repositories/prisma-attachments-repository'
+import { NotificationsRepository } from '@/domain/notification/application/repositories/notifications-repository'
+import { PrismaNotificationsRepository } from './prisma/repositories/prisma-notifications-repository'
 
 @Module({
   providers: [
@@ -51,6 +53,10 @@ import { PrismaAttachmentsRepository } from './prisma/repositories/prisma-attach
     {
       provide: AttachmentsRepository,
       useClass: PrismaAttachmentsRepository,
+    },
+    {
+      provide: NotificationsRepository,
+      useClass: PrismaNotificationsRepository,
     },
   ],
   exports: [
